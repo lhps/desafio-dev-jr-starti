@@ -11,11 +11,9 @@ use App\Http\Resources\UserCollection;
 
 class UserController extends Controller
 {
-    //
     public function index() {
 
         return new UserCollection(Users::all());
-        // return Users::all();
     }
 
     public function store(Request $request)
@@ -49,21 +47,6 @@ class UserController extends Controller
                 return response()->json($message, 201);
             }
 
-
-
-
-        // Users::create($request->all());
-
-
-
-        // return response()->json($user, 201);
-        // return ($user)->response()->setStatusCode(201);
-        // $user = Users::create($request->all());
-
-
-        // return (new UserResource($user))
-        //         ->response()
-        //         ->setStatusCode(201);
     }
 
     public function delete($id)
@@ -82,12 +65,6 @@ class UserController extends Controller
     }
 
     public function update(Request $request, $id) {
-        // $request->merge(['correct' => (bool) json_decode($request->get('correct'))]);
-
-        // $request->validate([
-        //     'correct' => 'required|boolean'
-        // ]);
-
         $user = Users::findOrFail($id);
 
         if($user) {
@@ -100,9 +77,6 @@ class UserController extends Controller
             $message = 'Usuário não encontrado!';
             return response()->json($message, 404);
         }
-
-
-        // $user->save();
 
         return new UserResource($user);
     }

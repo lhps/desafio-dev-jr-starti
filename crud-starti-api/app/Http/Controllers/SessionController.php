@@ -11,26 +11,6 @@ use Auth;
 class SessionController extends Controller
 {
     //
-     function checkLogin(Request $request)
-    {
-        $this->validate($request, [
-            'email'     =>  'required|email',
-            'password'     =>  'required|alphaNum|min:3'
-        ]);
-
-        $user_data = array(
-            'email'     => $request->get('email'),
-            'password'     => $request->get('password'),
-        );
-
-        if(Auth::attempt($user_data)) {
-            return  response()->setStatusCode(200);
-        } else {
-            return
-                response()
-                ->setStatusCode(201);
-        }
-    }
 
     function create(Request $request) {
         $user_data = array(
